@@ -17,4 +17,17 @@ io.on('connection', (client) => {
     client.emit('actualState', {
         actual: ticketControl.getLastTicket()
     });
+
+    client.on('attendTicket', (data, callback) => {
+        if ( !data.desk ) {
+            return callback({
+                err: true,
+                message: 'Desk is required'
+            });
+        }
+
+        let attendTicket = ticketControl.attentTicket(data.desk);
+
+        callback(attendTicket);
+    });
 });

@@ -68,7 +68,7 @@ class TicketControl {
 
     resetCont() {
         this.last = 0;
-        this.last4 = 0;
+        this.last4 = [];
         console.log('Reset System');
         this.saveFile();
     }
