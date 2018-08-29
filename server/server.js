@@ -17,6 +17,10 @@ let io = socketIO(server);
 
 io.on('connection', (client) => {
     console.log('User connected');
+
+    client.on('disconnect', () => {
+        console.log('User disconnect');
+    });
 });
 
 server.listen(port, (err) => {
