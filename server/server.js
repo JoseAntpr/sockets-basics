@@ -28,8 +28,20 @@ io.on('connection', (client) => {
     });
 
     // Listen client
-    client.on('enviarMensaje', (menssage) => {
-        console.log(menssage);
+    client.on('enviarMensaje', (message, callback) => {
+        //console.log(menssage);
+
+        if( message.user) {
+            callback({
+                resp: 'TODO SALIO BIEN'
+            });
+        } else {
+            callback({
+                resp: 'TODO SALIO MAL!!'
+            });
+        }
+
+        
     });
 });
 
