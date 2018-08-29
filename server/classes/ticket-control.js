@@ -25,6 +25,10 @@ class TicketControl {
         return `Ticket ${ this.last }`
     }
 
+    getLastTicket() {
+        return `Ticket ${ this.last }`
+    }
+
     resetCont() {
         this.last = 0;
         console.log('Reset System');

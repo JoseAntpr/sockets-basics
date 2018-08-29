@@ -18,3 +18,7 @@ $('button').on('click', function(){
         label.text(nextTicket);
     });
 });
+
+socket.on('actualState', function(actualState) {
+    label.text(actualState.actual);
+});

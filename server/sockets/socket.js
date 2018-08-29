@@ -12,4 +12,9 @@ io.on('connection', (client) => {
 
         callback(next);
     });
+
+    // Emit 'actualState'
+    client.emit('actualState', {
+        actual: ticketControl.getLastTicket()
+    });
 });
