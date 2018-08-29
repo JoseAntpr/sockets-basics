@@ -13,37 +13,8 @@ const port = process.env.PORT || 3000;
 app.use(express.static(publicPath));
 
 // IO = back communication
-let io = socketIO(server);
-
-io.on('connection', (client) => {
-    console.log('User connected');
-
-    client.emit('enviarMensaje', {
-        user: 'Admin',
-        message: 'Bienvenido'
-    });
-
-    client.on('disconnect', () => {
-        console.log('User disconnect');
-    });
-
-    // Listen client
-    client.on('enviarMensaje', (message, callback) => {
-        //console.log(menssage);
-
-        if( message.user) {
-            callback({
-                resp: 'TODO SALIO BIEN'
-            });
-        } else {
-            callback({
-                resp: 'TODO SALIO MAL!!'
-            });
-        }
-
-        
-    });
-});
+module.exports.io = socketIO(server);
+require('./sockets/socket');
 
 server.listen(port, (err) => {
 
