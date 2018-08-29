@@ -11,12 +11,28 @@ class TicketControl {
 
         if ( data.today === this.today ) {
 
+            this.last = data.last;
+
         } else {
             this.resetCont();
         }
     }
 
+    nextTicket() {
+        this.last += 1;
+        this.saveFile();
+
+        return `Ticket ${ this.last }`
+    }
+
     resetCont() {
+        this.last = 0;
+        console.log('Reset System');
+        this.saveFile();
+    }
+
+    saveFile() {
+
         let jsonData = {
             last: this.last,
             today: this.today
@@ -25,8 +41,6 @@ class TicketControl {
         let jsonDataString = JSON.stringify(jsonData);
         
         fs.writeFileSync('./server/data/data.json', jsonDataString);
-
-        console.log('Reset system');
     }
 
 }
