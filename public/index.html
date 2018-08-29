@@ -28,6 +28,11 @@
             user: 'Jose',
             message: 'Hello World'
         });
+
+        // Listen info
+        socket.on('enviarMensaje', function(mensaje){
+            console.log(mensaje);
+        });
     </script>
 </body>
 

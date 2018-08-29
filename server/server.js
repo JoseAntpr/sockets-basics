@@ -18,6 +18,11 @@ let io = socketIO(server);
 io.on('connection', (client) => {
     console.log('User connected');
 
+    client.emit('enviarMensaje', {
+        user: 'Admin',
+        message: 'Bienvenido'
+    });
+
     client.on('disconnect', () => {
         console.log('User disconnect');
     });
