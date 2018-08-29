@@ -30,5 +30,9 @@ io.on('connection', (client) => {
         let attendTicket = ticketControl.attentTicket(data.desk);
 
         callback(attendTicket);
+
+        client.broadcast.emit('last4', {
+            last4: ticketControl.getLast4()
+        });
     });
 });

@@ -17,6 +17,12 @@ socket.on('actualState', function(data){
     updateHtml(data.last4);
 });
 
+socket.on('last4', function(data) {
+    var audio = new Audio('audio/new-ticket.mp3')
+    audio.play();
+    updateHtml(data.last4);
+});
+
 function updateHtml ( last4 ) {
     for( var i = 0; i <= last4.length - 1; i++) {
         lblTickets[i].text('Ticket' + last4[i].ticketNumber);
