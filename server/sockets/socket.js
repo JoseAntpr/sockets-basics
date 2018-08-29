@@ -14,18 +14,22 @@ io.on('connection', (client) => {
     });
 
     // Listen client
-    client.on('enviarMensaje', (message, callback) => {
-        //console.log(menssage);
+    client.on('enviarMensaje', (data, callback) => {
+        console.log(data);
 
-        if( message.user) {
-            callback({
-                resp: 'TODO SALIO BIEN'
-            });
-        } else {
-            callback({
-                resp: 'TODO SALIO MAL!!'
-            });
-        }
+        client.broadcast.emit('enviarMensaje', {
+            data
+        });
+
+        // if( message.user) {
+        //     callback({
+        //         resp: 'TODO SALIO BIEN'
+        //     });
+        // } else {
+        //     callback({
+        //         resp: 'TODO SALIO MAL!!'
+        //     });
+        // }
 
         
     });
