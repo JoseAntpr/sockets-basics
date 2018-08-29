@@ -12,7 +12,12 @@ const port = process.env.PORT || 3000;
 
 app.use(express.static(publicPath));
 
+// IO = back communication
 let io = socketIO(server);
+
+io.on('connection', (client) => {
+    console.log('User connected');
+});
 
 server.listen(port, (err) => {
 
