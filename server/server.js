@@ -21,6 +21,11 @@ io.on('connection', (client) => {
     client.on('disconnect', () => {
         console.log('User disconnect');
     });
+
+    // Listen client
+    client.on('enviarMensaje', (menssage) => {
+        console.log(menssage);
+    });
 });
 
 server.listen(port, (err) => {
